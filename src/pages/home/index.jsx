@@ -1,9 +1,24 @@
 
 import './style.css'
-import Trash from 'C:\Users\vitor\dev-cadastrousuario\src\trash.svg'
+import Img from '../../assets/trash.svg'
 
 
 function Home() {
+
+  const users = [
+    {
+      id: '23324234',
+      name: 'Rodolfo',
+      age: 33,
+      email: 'ro@gmail.com'
+    },
+    {
+      id: '233666634',
+      name: 'aline',
+      age: 33,
+      email: 'aline@gmail.com'
+    },
+  ]
 
 
   return (
@@ -16,18 +31,19 @@ function Home() {
         <button type='button'>Cadastrar</button>
       </form>
 
-      <div>
-        <div>
-          <p>Nome:</p>
-          <p>Idade:</p>
-          <p>Email:</p>
+      {users.map((user) => (
+
+        <div key={user.id}>
+          <div>
+            <p>Nome: {user.name}</p>
+            <p>Idade: {user.age}</p>
+            <p>Email: {user.email}</p>
+          </div>
+          <button>
+            <img src={Img} />
+          </button>
         </div>
-      </div>
-      <button>
-        <img src={Trash} />
-      </button>
-
-
+      ))}
 
     </div>
 
