@@ -1,6 +1,6 @@
 
 import './style.css'
-import Img from '../../assets/trash.svg'
+import Img from '../../assets/seo-social-web-network-internet_262_icon-icons.com_61518.png'
 
 
 function Home() {
@@ -28,7 +28,7 @@ function Home() {
         <input placeholder="Nome" name='nome' type='text' />
         <input placeholder="Idade" name='idade' type='number' />
         <input placeholder="E-mail" name='email' type='email' />
-        <button type='button'>Cadastrar</button>
+        <button className="button-default" type='button'>Cadastrar</button>
       </form>
 
       {users.map((user) => (

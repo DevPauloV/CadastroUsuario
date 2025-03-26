@@ -22,7 +22,7 @@
         margin-bottom: 20px;
     }
 
-    & button {
+    & .button-default{
         border-radius: 30px;
         background-color: #8b8ae1;
         height: 40px;
@@ -32,8 +32,8 @@
         color: #fff;
     }
 
-    & button:hover {
-        opacity: 0.8;
+    & .button-default:hover {
+        opacity: 0.5;
     }
 
     & input {
@@ -68,12 +68,13 @@
     }
 
     & button {
-        background-color: #8b8ae1;
+        background-color: transparent;
         border: none;
         cursor: pointer;
     }
-
+    
     & button:hover {
         opacity: 0.5;
     }
 }
+
