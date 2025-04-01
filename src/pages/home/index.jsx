@@ -1,25 +1,24 @@
 
 import './style.css'
 import Img from '../../assets/seo-social-web-network-internet_262_icon-icons.com_61518.png'
+import api from '../../services/api'
+import { useEffect, useState} from 'react'
 
 
 function Home() {
 
-  const users = [
-    {
-      id: '23324234',
-      name: 'Rodolfo',
-      age: 33,
-      email: 'ro@gmail.com'
-    },
-    {
-      id: '233666634',
-      name: 'aline',
-      age: 33,
-      email: 'aline@gmail.com'
-    },
-  ]
+  const [users, setUsers] = useState([])
 
+  async function getUsers() {
+    const usersFromApi = await api.get('/usuarios')
+
+    setUsers(usersFromApi.data)
+  }
+
+
+  useEffect(() => {
+    getUsers()
+  }, [])  
 
   return (
     <div className='container'>
