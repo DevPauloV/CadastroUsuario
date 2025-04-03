@@ -16,12 +16,14 @@ function Home() {
   const inputAge = useRef()
   const inputEmail = useRef()
 
+  //-------------------------------------------------------------------------
   async function getUsers() {
     const usersFromApi = await api.get('/usuarios')
 
     setUsers(usersFromApi.data)
   }
 
+  //-------------------------------------------------------------------------
   async function createUsers() {
 
     await api.post('/usuarios', {
@@ -38,6 +40,16 @@ function Home() {
 
     getUsers() 
   }
+
+//-------------------------------------------------------------------------
+
+async function deleteUsers(id) {
+  await api.delete(`/usuarios/${id}`)
+
+  getUsers() 
+}
+
+//------------------------------------------------------------------------- 
 
 
   useEffect(() => {
@@ -62,7 +74,7 @@ function Home() {
             <p>Idade: <span>{user.age}</span></p>
             <p>Email: <span>{user.email}</span></p>
           </div>
-          <button>
+          <button onClick={() => deleteUsers(user.id)} >
             <img src={Img} />
           </button>
         </div>
