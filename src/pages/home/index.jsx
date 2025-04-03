@@ -2,7 +2,7 @@
 import './style.css'
 import Img from '../../assets/seo-social-web-network-internet_262_icon-icons.com_61518.png'
 import api from '../../services/api'
-import { useEffect, useState, useRef} from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 
 // react hook - useRef
@@ -22,10 +22,27 @@ function Home() {
     setUsers(usersFromApi.data)
   }
 
+  async function createUsers() {
+
+    await api.post('/usuarios', {
+      name: inputName.current.value,
+      age: inputAge.current.value,
+      email: inputEmail.current.value 
+
+      
+    })
+
+    inputName.current.value = ''
+    inputAge.current.value = ''
+    inputEmail.current.value = ''
+
+    getUsers() 
+  }
+
 
   useEffect(() => {
     getUsers()
-  }, [])  
+  }, [])
 
   return (
     <div className='container'>
@@ -33,8 +50,8 @@ function Home() {
         <h1>Cadastro de Usuários</h1>
         <input placeholder="Nome" name='nome' type='text' ref={inputName} />
         <input placeholder="Idade" name='idade' type='number' ref={inputAge} />
-        <input placeholder="E-mail" name='email' type='email' ef={inputEmail} />
-        <button className="button-default" type='button'>Cadastrar</button>
+        <input placeholder="E-mail" name='email' type='email' ref={inputEmail} />
+        <button onClick={createUsers} className='button-default' type='button'>Cadastrar</button>
       </form>
 
       {users.map((user) => (
