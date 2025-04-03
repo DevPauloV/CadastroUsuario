@@ -2,7 +2,7 @@
 import './style.css'
 import Img from '../../assets/seo-social-web-network-internet_262_icon-icons.com_61518.png'
 import api from '../../services/api'
-import { useEffect, useState} from 'react'
+import { useEffect, useState, useRef} from 'react'
 
 
 // react hook - useRef
@@ -11,6 +11,10 @@ import { useEffect, useState} from 'react'
 function Home() {
 
   const [users, setUsers] = useState([])
+
+  const inputName = useRef()
+  const inputAge = useRef()
+  const inputEmail = useRef()
 
   async function getUsers() {
     const usersFromApi = await api.get('/usuarios')
@@ -27,9 +31,9 @@ function Home() {
     <div className='container'>
       <form>
         <h1>Cadastro de Usuários</h1>
-        <input placeholder="Nome" name='nome' type='text' />
-        <input placeholder="Idade" name='idade' type='number' />
-        <input placeholder="E-mail" name='email' type='email' />
+        <input placeholder="Nome" name='nome' type='text' ref={inputName} />
+        <input placeholder="Idade" name='idade' type='number' ref={inputAge} />
+        <input placeholder="E-mail" name='email' type='email' ef={inputEmail} />
         <button className="button-default" type='button'>Cadastrar</button>
       </form>
 
